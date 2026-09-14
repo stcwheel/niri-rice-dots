@@ -1,1 +1,179 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin": "5 5 0 5",
+    "height": 34,
+    "spacing": 4,
 
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window"
+    ],
+
+    "modules-center": [
+        "mpris"
+    ],
+
+    "modules-right": [
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "pulseaudio",
+        "clock"
+    ],
+
+    // Workspaces niri
+
+    "niri/workspaces": {
+        "format": "{index}",
+        "sort-by-id": true,
+        "all-outputs": false,
+        "disable-scroll": true,
+        "disable-click": false
+    },
+
+    // Active window
+
+    "niri/window": {
+        "format": "  {}",
+        "max-length": 60,
+        "separate-outputs": false,
+        "icon": true
+    },
+
+    // Music
+
+    "mpris": {
+        "format": "  {dynamic}",
+        "format-paused": "  {dynamic}",
+        "format-stopped": "  Sin música",
+
+        "player-icons": {
+            "default": "",
+            "spotify": "",
+            "firefox": ""
+        },
+
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+
+        "dynamic-order": [
+            "artist",
+            "title"
+        ],
+
+        "dynamic-len": 35,
+        "tooltip": true
+    },
+
+    // Network wifi
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  {ipaddr}",
+        "format-disconnected": "  Sin red",
+
+        "tooltip-format": "{ifname}\n{ipaddr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
+
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+
+    // CPU
+
+    "cpu": {
+        "interval": 2,
+        "format": "  {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip-format": "CPU: {usage}%"
+    },
+
+    // RAM
+
+    "memory": {
+        "interval": 2,
+        "format": "  {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f} GiB / {total:0.1f} GiB"
+    },
+
+    // Cpu temperature
+
+    "temperature": {
+        "interval": 2,
+        "format": "  {temperatureC}°C",
+        "critical-threshold": 85,
+        "warning-threshold": 70,
+        "tooltip-format": "CPU: {temperatureC}°C"
+    },
+
+    // Volume
+
+    "pulseaudio": {
+        "scroll-step": 5,
+
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+
+        "tooltip-format": "{desc}\nVolumen: {volume}%",
+
+        "on-click": "pavucontrol"
+    },
+
+    // Clock and date
+
+    "clock": {
+        "interval": 1,
+
+        "format": " {:%H:%M}",
+        "format-alt": "󰸘 {:%d/%m/%Y}",
+
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#cdd6f4'><b>{}</b></span>",
+                "days": "<span color='#cdd6f4'>{}</span>",
+                "weeks": "<span color='#7f849c'>W{}</span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    }
+}
